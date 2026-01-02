@@ -1,8 +1,18 @@
 import { Navigate } from "react-router-dom";
-import { auth } from "../services/firebase";
+import { useAuth } from "../context/AuthContext";
 
-const ProtectedRoute = ({children}) => {
-    return auth.currentUser ? children : <Navigate to="/"/>;
+const ProtectedRoute = ({children, allowedRoles}) => {
+
+    const {loading, user} = useAuth();
+
+    if(loading) return <p>Loading....</p>;
+    if(!user) return <Navigate to="/"/>;
+
+    if(allowedRoles && !allowedRoles.includes(user.role)){
+        <Navigate to="/unauthorized"/>;
+    }
+
+    return children;
 }
 
 export default ProtectedRoute;

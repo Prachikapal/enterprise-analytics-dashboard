@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {createUserWithEmailAndPassword} from "firebase/auth";
-import { auth } from "../services/firebase";
+import {doc, setDoc} from "firebase/firestore";
+import { auth, db } from "../services/firebase";
 import {isEmailValid} from "../utils/validators";
 
 const Signup = () => {
@@ -31,9 +32,12 @@ const Signup = () => {
             return;
         }
         try{
-           await createUserWithEmailAndPassword(auth,form.email,form.password);
+           const userCredentials = await createUserWithEmailAndPassword(auth,form.email,form.password);
+           console.log("userCredentials",userCredentials.user.uid);
+           await setDoc(doc(db, "users", userCredentials.user.uid),{email:form.email, role:"user", createdDate: new Date()})
            navigate("/");
         }catch(error){
+            console.log(error);
             alert("Signup failed");
         }
     }
