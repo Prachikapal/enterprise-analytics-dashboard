@@ -1,11 +1,11 @@
 import Layout from "../components/layout/Layout";
 
-const Dashboard = () => {
+const Reports = () => {
     return(
         <Layout>
-            
+        <h1>Reports</h1>
         </Layout>
     )
 }
 
-export default Dashboard;
+export default Reports;
