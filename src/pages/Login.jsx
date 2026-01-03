@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../services/firebase";
 import { isEmailValid } from "../utils/validators";
 import Button from "../components/common/Button";
 import Input from "../components/common/Input";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
 
@@ -15,6 +16,8 @@ const Login = () => {
         email: "",
         password: ""
     });
+
+    const {user} = useAuth();
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -37,12 +40,15 @@ const Login = () => {
         }
 
         try {
-            await signInWithEmailAndPassword(auth, form.email, form.password);
-            navigate("/dashboard");
+            await signInWithEmailAndPassword(auth, form.email, form.password); 
         } catch (error) {
             alert("Invalid credentials");
         }
         setLoading(false);
+    }
+
+    if(user){
+        return <Navigate to="/dashboard"/>
     }
 
     return (
