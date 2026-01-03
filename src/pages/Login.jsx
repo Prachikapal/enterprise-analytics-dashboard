@@ -11,13 +11,13 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    const [loading, setLoading] = useState(false);
+    const [logLoading, setLogLoading] = useState(false);
     const [form, setForm] = useState({
         email: "",
         password: ""
     });
 
-    const {user} = useAuth();
+    const {user, loading} = useAuth();
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -26,16 +26,16 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        setLoading(true);
+        setLogLoading(true);
         if (!form.password || !form.email) {
             alert("All fields are required !");
-            setLoading(false);
+            setLogLoading(false);
             return;
         }
 
         if (!isEmailValid(form.email)) {
             alert("Invalid Email");
-            setLoading(false);
+            setLogLoading(false);
             return;
         }
 
@@ -44,7 +44,11 @@ const Login = () => {
         } catch (error) {
             alert("Invalid credentials");
         }
-        setLoading(false);
+        setLogLoading(false);
+    }
+
+    if(loading){
+        return null;
     }
 
     if(user){
@@ -59,7 +63,7 @@ const Login = () => {
                 <form onSubmit={handleSubmit}>
                     <Input type="email" name="email" placeholder="user@example.com" value={form.email} onChange={handleChange} />
                     <Input type="password" name="password" placeholder="*******" value={form.password} onChange={handleChange} />
-                    <Button text="Login" loading={loading}/>
+                    <Button text="Login" loading={logLoading}/>
                 </form>
                 <p className="text-center text-sm mt-4 text-gray-600">Don't have an account ?
                     <span className="text-blue-600 cursor-pointer hover:underline" onClick={() => navigate("/signup")}> Sign Up</span>

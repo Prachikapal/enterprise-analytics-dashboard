@@ -10,3 +10,10 @@ export const userData = [
     {name: "Active", value: 400},
     {name: "Inactive", value: 200},
 ];
+
+export const summaryCardsData = [
+    {title: "Total Revenue", value:"$124,000"},
+    {title: "Active users", value:"1,245"},
+    {title: "Bookings", value:"8,430"},
+    {title: "Conversion Rate", value:"4.6%"},
+]

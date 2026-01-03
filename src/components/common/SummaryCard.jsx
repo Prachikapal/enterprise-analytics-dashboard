@@ -1,11 +1,4 @@
-const cards = [
-    {title: "Total Revenue", value:"$124,000"},
-    {title: "Active users", value:"1,245"},
-    {title: "Bookings", value:"8,430"},
-    {title: "Conversion Rate", value:"4.6%"},
-]
-
-const SummaryCard = () => {
+const SummaryCard = ({cards}) => {
     return(
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
             {cards.map(card => (
