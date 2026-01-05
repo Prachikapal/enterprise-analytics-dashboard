@@ -1,9 +1,11 @@
+import SummaryCard from "../components/common/SummaryCard";
 import Layout from "../components/layout/Layout";
+import { summaryData } from "../data/reportsData";
 
 const Reports = () => {
-    return(
-        <Layout title = "Reports">
-        <h1>Reports</h1>
+    return (
+        <Layout title="Reports">
+            <SummaryCard cards={summaryData} />
         </Layout>
     )
 }
