@@ -1,16 +1,43 @@
-# React + Vite
+📊 Enterprise Analytics Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A role-based analytics dashboard built using React and Firebase, featuring authentication, protected routes, admin management, charts, and reports.
 
-Currently, two official plugins are available:
+🚀 Features
+🔐 Authentication & Authorization
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Login & Signup using Firebase Authentication
 
-## React Compiler
+Persistent auth state using onAuthStateChanged
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Protected routes for authenticated users
 
-## Expanding the ESLint configuration
+Admin-only routes using role-based access control
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+📈 Dashboard
+
+KPI summary cards
+
+Interactive charts (Revenue trends, user distribution)
+
+Recent activity table
+
+Responsive layout with sidebar & header
+
+🛡️ Admin Panel
+
+Admin-only access
+
+Fetch users from Firestore (email & role)
+
+Role-based UI rendering
+
+
+📑 Reports
+
+Reports summary cards
+
+Filterable reports (date, type)
+
+Tabular data view
+
+Export button (UI-level)
